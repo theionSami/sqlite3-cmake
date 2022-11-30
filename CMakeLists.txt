@@ -1,11 +1,11 @@
 PROJECT(sqlite3)
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.1)
 
 include_directories(${CMAKE_SOURCE_DIR}/src)
 add_library(sqlite3 STATIC src/sqlite3.c src/sqlite3.h src/sqlite3ext.h)
 install(TARGETS sqlite3 DESTINATION lib)
 FILE(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
-INSTALL(FILES ${files} DESTINATION include)
+INSTALL(FILES ${files} DESTINATION include/sqlite3/)
 
 add_executable(sqlite src/sqlite3.c src/shell.c src/sqlite3.h src/sqlite3ext.h)
 #set_target_properties(sqlite PROPERTIES OUTPUT_NAME sqlite3)
@@ -32,5 +32,5 @@ add_executable(sqlite src/sqlite3.c src/shell.c src/sqlite3.h src/sqlite3ext.h)
 #  install(TARGETS sqlite RUNTIME DESTINATION bin)
 #endif()
 
-install(FILES src/sqlite3.h src/sqlite3ext.h DESTINATION include)
-install(TARGETS sqlite3 LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
+#install(FILES src/sqlite3.h src/sqlite3ext.h DESTINATION include)
+#install(TARGETS sqlite3 LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
